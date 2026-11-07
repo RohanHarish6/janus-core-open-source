@@ -1,0 +1,165 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Janus Core Multi-Agent Architecture & Command Center API",
+    "version": "1.1.5",
+    "description": "REST API endpoints for the 4-Tier token-optimized multi-agent engine, Command & Search Workbench, hardware scaling governor, and cyber security manager."
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Serve Cityscape & Workbench Dashboard",
+        "description": "Renders the interactive dashboard UI with injected session bearer token.",
+        "responses": {
+          "200": {
+            "description": "HTML Dashboard"
+          }
+        }
+      }
+    },
+    "/api/health": {
+      "get": {
+        "summary": "System Health Check",
+        "responses": {
+          "200": {
+            "description": "Server health status and port"
+          }
+        }
+      }
+    },
+    "/api/workbench/execute": {
+      "post": {
+        "summary": "Execute Workbench Command or Search",
+        "description": "Ingests attached files and prompt commands, performs Cross-Agent AST Taint Guard sanitization, and routes execution through the 4-tier model hierarchy.",
+        "responses": {
+          "200": {
+            "description": "Synthesis results, citations, and telemetry"
+          }
+        }
+      }
+    },
+    "/api/workbench/history": {
+      "get": {
+        "summary": "Retrieve Workbench Execution History",
+        "responses": {
+          "200": {
+            "description": "List of recent query executions"
+          }
+        }
+      }
+    },
+    "/api/run_pipeline": {
+      "post": {
+        "summary": "Trigger Multi-Agent Autonomous DAG Wave",
+        "description": "Runs parallel agent pipeline and returns live token accounting metrics.",
+        "responses": {
+          "200": {
+            "description": "Pipeline execution metrics and consensus status"
+          }
+        }
+      }
+    },
+    "/api/metrics": {
+      "get": {
+        "summary": "Live Token Accounting & Cost Offload Metrics",
+        "responses": {
+          "200": {
+            "description": "Token volume, cache hit rate, and cost savings"
+          }
+        }
+      }
+    },
+    "/api/ollama_status": {
+      "get": {
+        "summary": "Tier 0 Local Ollama Daemon Status",
+        "responses": {
+          "200": {
+            "description": "Local daemon responsiveness and installed models"
+          }
+        }
+      }
+    },
+    "/api/hardware/status": {
+      "get": {
+        "summary": "Hardware Profile & Power State",
+        "responses": {
+          "200": {
+            "description": "CPU cores, RAM usage, battery state, and active power mode"
+          }
+        }
+      }
+    },
+    "/api/hardware/power_mode": {
+      "post": {
+        "summary": "Set Power Governor Mode",
+        "description": "Toggles between PERFORMANCE and BATTERY_SAVER mode.",
+        "responses": {
+          "200": {
+            "description": "Updated hardware concurrency settings"
+          }
+        }
+      }
+    },
+    "/api/security/audit_skill": {
+      "post": {
+        "summary": "Audit Skill or Prompt Content",
+        "description": "Scans for AST RCE, prompt injections, and data exfiltration.",
+        "responses": {
+          "200": {
+            "description": "Threat report and safety classification"
+          }
+        }
+      }
+    },
+    "/api/security/patch_skill": {
+      "post": {
+        "summary": "Auto-Remediate and Patch Code",
+        "responses": {
+          "200": {
+            "description": "Sanitized and patched code"
+          }
+        }
+      }
+    },
+    "/api/security/sbom": {
+      "get": {
+        "summary": "CycloneDX v1.5 Software Bill of Materials",
+        "responses": {
+          "200": {
+            "description": "Component inventory and cryptographic hashes"
+          }
+        }
+      }
+    },
+    "/api/security/standards_compliance": {
+      "get": {
+        "summary": "NIST SSDF & OWASP LLM Top 10 Compliance Ledger",
+        "responses": {
+          "200": {
+            "description": "Controls checklist and compliance scores"
+          }
+        }
+      }
+    },
+    "/api/security/pending_approvals": {
+      "get": {
+        "summary": "Sandbox Governor Held Actions",
+        "responses": {
+          "200": {
+            "description": "Pending high-risk actions awaiting human approval"
+          }
+        }
+      }
+    },
+    "/api/security/approve_action": {
+      "post": {
+        "summary": "Approve or Deny Held High-Risk Action",
+        "responses": {
+          "200": {
+            "description": "Execution status of decision"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "janus-core"
+version = "1.1.5"
+description = "Token-optimized autonomous multi-agent AI architecture with tiered routing and animated cityscape UI"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = {text = "MIT"}
+authors = [
+    {name = "Gemini Spark Suite", email = "dev@agentic-cityscape.local"}
+]
+keywords = ["multi-agent", "token-optimization", "ollama", "colibri", "freellmapi", "rag", "langgraph"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: Microsoft :: Windows",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+
+dependencies = [
+    "pydantic>=1.10.4,<3.0.0",
+    "httpx>=0.25.0,<0.29.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0,<9.0.0",
+    "pytest-asyncio>=0.23.0,<0.25.0",
+    "ruff>=0.3.0,<0.5.0",
+    "mypy>=1.9.0,<1.11.0"
+]
+build = [
+    "pyinstaller>=6.3.0,<7.0.0"
+]
+
+[project.scripts]
+janus-core = "desktop_app:main"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
