@@ -266,12 +266,12 @@ class SecurityManager:
 
     def get_standards_compliance(self) -> Dict[str, Any]:
         """Audits Janus Core against NIST SP 800-218, OWASP LLM 2025/2026, and CISA Secure by Design."""
-        package_root = str(self.memory_root.parent)
+        package_root = str(Path(__file__).resolve().parent)
         return CybersecurityStandardsComplianceAuditor.audit_system(package_root, self)
 
     def get_sbom(self) -> Dict[str, Any]:
         """Generates a cryptographically verified Software Bill of Materials (SBOM) per NIST SSDF."""
-        package_root = str(self.memory_root.parent)
+        package_root = str(Path(__file__).resolve().parent)
         return SBOMGenerator.generate_sbom(package_root)
 
     def sanitize_outbound_prompt(self, prompt: str) -> Tuple[str, int]:
@@ -288,7 +288,7 @@ class SecurityManager:
 
     def verify_sbom_provenance(self) -> Tuple[bool, List[str]]:
         """Verifies cryptographic provenance across all codebase files per NIST SSDF."""
-        package_root = str(self.memory_root.parent)
+        package_root = str(Path(__file__).resolve().parent)
         sbom = self.get_sbom()
         return SBOMGenerator.verify_provenance(package_root, sbom)
 
